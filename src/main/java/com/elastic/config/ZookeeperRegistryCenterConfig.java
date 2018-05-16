@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 注册中心配置(zookeeper)
+ *
  * @author xin.huang
  * @version v1.0
  * @date 2018/5/10 15:21
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class ZookeeperRegistryCenterConfig {
     @Bean(initMethod = "init")
     public ZookeeperRegistryCenter regCenter(@Value("${regCenter.serverList}") final String serverList,
-                                             @Value("${regCenter.namespace}") final String namespace){
-        return new ZookeeperRegistryCenter(new ZookeeperConfiguration(serverList,namespace));
+                                             @Value("${regCenter.namespace}") final String namespace) {
+        return new ZookeeperRegistryCenter(new ZookeeperConfiguration(serverList, namespace));
     }
 }

@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 /**
  * 作业事件配置
+ *
  * @author xin.huang
  * @version v1.0
  * @date 2018/5/10 15:25
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 public class JobEventConfig {
     @Resource
     private DataSource dataSource;
+
     @Bean
     public JobEventConfiguration jobEventConfiguration() {
         return new JobEventRdbConfiguration(dataSource);

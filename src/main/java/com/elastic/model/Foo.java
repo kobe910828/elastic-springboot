@@ -12,12 +12,12 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-public class Foo implements Serializable{
+public class Foo implements Serializable {
     private long id;
     private String location;
     private Status status;
 
-    public Foo(long id, String location, Status status){
+    public Foo(long id, String location, Status status) {
         this.id = id;
         this.location = location;
         this.status = status;

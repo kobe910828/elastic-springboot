@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * 任务注册
+ *
  * @author xin.huang
  * @version v1.0
  * @date 2018/5/10 15:43
@@ -43,8 +44,13 @@ public class SimpleJobConfig {
 
     private LiteJobConfiguration getLiteJobConfiguration(final Class<? extends SimpleJob> jobClass, final String cron,
                                                          final int shardingTotalCount, final String shardingItemParameters) {
-        return LiteJobConfiguration.newBuilder(new SimpleJobConfiguration(JobCoreConfiguration.newBuilder(
-                jobClass.getName(), cron, shardingTotalCount).shardingItemParameters(shardingItemParameters).build(),
-                jobClass.getCanonicalName())).overwrite(true).build();
+        // 定义作业核心配置
+        JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration.newBuilder(jobClass.getName(), cron, shardingTotalCount)
+                .shardingItemParameters(shardingItemParameters).build();
+        // 定义SIMPLE类型配置
+        SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(simpleCoreConfig, jobClass.getCanonicalName());
+        // 定义Lite作业根配置
+        LiteJobConfiguration simpleJobRootConfig = LiteJobConfiguration.newBuilder(simpleJobConfig).overwrite(true).build();
+        return simpleJobRootConfig;
     }
 }
