@@ -1,2 +1,2 @@
 # elastic-springboot
-SpringBoot集成elastic的简单例子
+SpringBoot集成elastic-job的简单例子
