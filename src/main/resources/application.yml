@@ -1,3 +1,6 @@
+server:
+  port: 7777
+
 regCenter:
 #  serverList: localhost:6181
   serverList: 47.99.243.252:2280,47.99.243.252:2281,47.99.243.252:2282
